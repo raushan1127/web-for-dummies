@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Learnify - Thank You for Downloading!</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts - Inter -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800 flex items-center justify-center min-h-screen">
+
+    <div class="bg-white rounded-xl shadow-xl p-8 md:p-12 text-center max-w-lg mx-auto">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-20 w-20 text-green-500 mx-auto mb-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+        </svg>
+        <h1 class="text-4xl font-bold text-indigo-700 mb-4">Thank You for Registering!</h1>
+        <p class="text-lg text-gray-600 mb-4">Your download is ready.</p>
+        <p class="text-md text-gray-500 mb-8">Please click the button below to download your PDF.</p>
+
+        <a href="basic-text.pdf" download="basic-text.pdf" class="px-8 py-3 bg-indigo-600 text-white font-semibold rounded-md shadow-lg hover:bg-indigo-700 transition duration-300">
+            Download PDF
+        </a>
+        <a href="index.html" class="mt-4 block text-indigo-600 hover:underline">Go to Homepage</a>
+    </div>
+
+    <script>
+        // The automatic download on page load was removed because it often causes
+        // issues with the preview environment, making it reload or not sustain.
+        // Users should now manually click the "Download PDF" button.
+    </script>
+</body>
+</html>
