@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register Now to Download</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts - Inter -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .message-box {
+            position: fixed;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: #ef4444; /* Red for error */
+            color: white;
+            padding: 15px 25px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+            display: none; /* Hidden by default */
+        }
+        .message-box.success {
+            background-color: #22c55e; /* Green for success */
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800 flex items-center justify-center min-h-screen">
+
+    <div class="bg-white rounded-xl shadow-xl p-8 md:p-12 text-center max-w-lg mx-auto">
+        <h1 class="text-4xl font-bold text-indigo-700 mb-6">Register now to download</h1>
+        <p class="text-lg text-gray-600 mb-8">Please fill in your details to access the exclusive content.</p>
+
+        <form id="downloadForm" class="bg-white p-6 rounded-lg text-gray-800">
+            <div class="mb-6 text-left">
+                <label for="name" class="block text-gray-700 text-lg font-medium mb-2">Name</label>
+                <input type="text" id="name" name="name" placeholder="Your Full Name" class="w-full px-4 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500 transition duration-200">
+            </div>
+            <div class="mb-8 text-left">
+                <label for="email" class="block text-gray-700 text-lg font-medium mb-2">Email Address</label>
+                <input type="email" id="email" name="email" placeholder="your.email@example.com" class="w-full px-4 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500 transition duration-200">
+            </div>
+            <button type="submit" class="w-full bg-indigo-600 text-white font-bold py-3 rounded-md shadow-lg hover:bg-indigo-700 transition duration-300 transform hover:scale-105">
+                Download Now
+            </button>
+        </form>
+    </div>
+
+    <!-- Message Box for notifications -->
+    <div id="messageBox" class="message-box"></div>
+
+    <script>
+        document.getElementById('downloadForm').addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent the default form submission
+
+            const nameInput = document.getElementById('name');
+            const emailInput = document.getElementById('email');
+            const messageBox = document.getElementById('messageBox');
+
+            // Simple validation
+            if (nameInput.value.trim() === '' || emailInput.value.trim() === '') {
+                showMessage('Please fill in both your name and email address.', false);
+            } else {
+                // If fields are filled, simulate PDF download
+                // This URL now points to the uploaded PDF
+                const pdfUrl = 'basic-text.pdf'; // Use the filename of your uploaded PDF
+                const link = document.createElement('a');
+                link.href = pdfUrl;
+                link.download = 'basic-text.pdf'; // Suggested filename for download, matching the uploaded file
+                document.body.appendChild(link);
+                link.click();
+                document.body.removeChild(link);
+
+                showMessage('Download initiated! Your PDF should start downloading shortly.', true);
+
+                // Optionally, clear the form after successful submission/download
+                nameInput.value = '';
+                emailInput.value = '';
+            }
+        });
+
+        // Function to display messages
+        function showMessage(message, isSuccess) {
+            const messageBox = document.getElementById('messageBox');
+            messageBox.textContent = message;
+            messageBox.className = 'message-box'; // Reset classes
+            if (isSuccess) {
+                messageBox.classList.add('success');
+            }
+            messageBox.style.display = 'block';
+
+            // Hide the message after 3 seconds
+            setTimeout(() => {
+                messageBox.style.display = 'none';
+            }, 3000);
+        }
+    </script>
+</body>
+</html>
