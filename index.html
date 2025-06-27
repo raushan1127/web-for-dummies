@@ -46,7 +46,7 @@
                 <input type="email" id="email" name="email" placeholder="your.email@example.com" class="w-full px-4 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500 transition duration-200">
             </div>
             <button type="submit" class="w-full bg-indigo-600 text-white font-bold py-3 rounded-md shadow-lg hover:bg-indigo-700 transition duration-300 transform hover:scale-105">
-                Download Now
+                Register Now
             </button>
         </form>
     </div>
@@ -66,21 +66,8 @@
             if (nameInput.value.trim() === '' || emailInput.value.trim() === '') {
                 showMessage('Please fill in both your name and email address.', false);
             } else {
-                // If fields are filled, simulate PDF download
-                // This URL now points to the uploaded PDF
-                const pdfUrl = 'basic-text.pdf'; // Use the filename of your uploaded PDF
-                const link = document.createElement('a');
-                link.href = pdfUrl;
-                link.download = 'basic-text.pdf'; // Suggested filename for download, matching the uploaded file
-                document.body.appendChild(link);
-                link.click();
-                document.body.removeChild(link);
-
-                showMessage('Download initiated! Your PDF should start downloading shortly.', true);
-
-                // Optionally, clear the form after successful submission/download
-                nameInput.value = '';
-                emailInput.value = '';
+                // If fields are filled, redirect to the thank you page
+                window.location.href = 'thankyou.html';
             }
         });
 
