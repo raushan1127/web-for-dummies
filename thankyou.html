@@ -22,18 +22,30 @@
         </svg>
         <h1 class="text-4xl font-bold text-indigo-700 mb-4">Thank You for Registering!</h1>
         <p class="text-lg text-gray-600 mb-4">Your download is ready.</p>
-        <p class="text-md text-gray-500 mb-8">Please click the button below to download your PDF.</p>
+        <p class="text-md text-gray-500 mb-8">Please click the button below to view and download your PDF.</p>
 
-        <a href="basic-text.pdf" download="basic-text.pdf" class="px-8 py-3 bg-indigo-600 text-white font-semibold rounded-md shadow-lg hover:bg-indigo-700 transition duration-300">
+        <!-- The 'Download PDF' button.
+             - href: points to the PDF file.
+             - target="_blank": opens the PDF in a new browser tab (for preview).
+             - onclick="triggerPdfActions()": calls a JavaScript function to also trigger a download.
+        -->
+        <a href="basic-text.pdf" target="_blank" class="px-8 py-3 bg-indigo-600 text-white font-semibold rounded-md shadow-lg hover:bg-indigo-700 transition duration-300" onclick="triggerPdfActions()">
             Download PDF
         </a>
         <a href="index.html" class="mt-4 block text-indigo-600 hover:underline">Go to Homepage</a>
     </div>
 
     <script>
-        // The automatic download on page load was removed because it often causes
-        // issues with the preview environment, making it reload or not sustain.
-        // Users should now manually click the "Download PDF" button.
+        // Function to trigger both preview (via href/target) and download (programmatically)
+        function triggerPdfActions() {
+            // Create a temporary, hidden anchor tag to trigger the download
+            const downloadLink = document.createElement('a');
+            downloadLink.href = 'basic-text.pdf'; // Set the path to your PDF
+            downloadLink.download = 'basic-text.pdf'; // Specify the filename for download
+            document.body.appendChild(downloadLink); // Append to the document body
+            downloadLink.click(); // Programmatically click the link to start download
+            document.body.removeChild(downloadLink); // Clean up the temporary link
+        }
     </script>
 </body>
 </html>
